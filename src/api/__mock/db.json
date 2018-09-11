@@ -1,0 +1,149 @@
+{
+  "beers" :[
+    {
+      "id": 1,
+      "name": "Bear 1",
+      "image": "https://dummyimage.com/100x150/ffffff/000000.png&text=beer1",
+      "tags": [
+        {
+          "key": "lager",
+          "name": "라거"
+        },
+        {
+          "key": "imported",
+          "name": "수입맥주"
+        }
+      ],
+      "price": 10000,
+      "stock": 10
+    },
+    {
+      "id": 2,
+      "name": "Bear 2",
+      "image": "https://dummyimage.com/100x150/ffffff/000000.png&text=beer2",
+      "tags": [
+        {
+          "key": "lager",
+          "name": "라거"
+        },
+        {
+          "key": "domestic",
+          "name": "국산맥주"
+        }    ],
+      "price": 5000,
+      "stock": 5
+    },
+    {
+      "id": 3,
+      "name": "Bear 3",
+      "image": "https://dummyimage.com/100x150/ffffff/000000.png&text=beer3",
+      "tags": [
+        {
+          "key": "lager",
+          "name": "라거"
+        },
+        {
+          "key": "domestic",
+          "name": "국산맥주"
+        }    ],
+      "price": 5000,
+      "stock": 5
+    },
+    {
+      "id": 4,
+      "name": "Bear 4",
+      "image": "https://dummyimage.com/100x150/ffffff/000000.png&text=beer4",
+      "tags": [
+        {
+          "key": "lager",
+          "name": "라거"
+        },
+        {
+          "key": "domestic",
+          "name": "국산맥주"
+        }    ],
+      "price": 5000,
+      "stock": 5
+    },
+    {
+      "id": 5,
+      "name": "Bear 5",
+      "image": "https://dummyimage.com/100x150/ffffff/000000.png&text=beer5",
+      "tags": [
+        {
+          "key": "lager",
+          "name": "라거"
+        },
+        {
+          "key": "domestic",
+          "name": "국산맥주"
+        }    ],
+      "price": 5000,
+      "stock": 5
+    },
+    {
+      "id": 6,
+      "name": "Bear 6",
+      "image": "https://dummyimage.com/100x150/ffffff/000000.png&text=beer6",
+      "tags": [
+        {
+          "key": "lager",
+          "name": "라거"
+        },
+        {
+          "key": "domestic",
+          "name": "국산맥주"
+        }    ],
+      "price": 5000,
+      "stock": 5
+    },
+    {
+      "id": 7,
+      "name": "Bear 7",
+      "image": "https://dummyimage.com/100x150/ffffff/000000.png&text=beer7",
+      "tags": [
+        {
+          "key": "lager",
+          "name": "라거"
+        },
+        {
+          "key": "domestic",
+          "name": "국산맥주"
+        }    ],
+      "price": 5000,
+      "stock": 5
+    },
+    {
+      "id": 8,
+      "name": "Bear 8",
+      "image": "https://dummyimage.com/100x150/ffffff/000000.png&text=beer8",
+      "tags": [
+        {
+          "key": "lager",
+          "name": "라거"
+        },
+        {
+          "key": "domestic",
+          "name": "국산맥주"
+        }    ],
+      "price": 5000,
+      "stock": 5
+    },
+    {
+      "id": 9,
+      "name": "Bear 9",
+      "image": "https://dummyimage.com/100x150/ffffff/000000.png&text=beer9",
+      "tags": [
+        {
+          "key": "lager",
+          "name": "라거"
+        },
+        {
+          "key": "domestic",
+          "name": "국산맥주"
+        }    ],
+      "price": 5000,
+      "stock": 5
+    }
+  ]
+}
