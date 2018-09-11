@@ -14,8 +14,9 @@ interface BeerListContainerProps {
 }
 
 const ItemCard = styled.div`
+  height: 144px;
   margin: 8px 10px;
-  padding: 5px;
+  padding: 12px;
   background-color: #fff;
   ::after {
     content: '';
@@ -44,7 +45,7 @@ class BeerListContainer extends React.Component<BeerListContainerProps> {
           <ItemCard key={id}>
             <ItemImage src={image} />
             <div>{name}</div>
-            <div>{_.map(tags, 'name')}</div>
+            <div>{_.map(tags, 'name').join(', ')}</div>
             <div>{price}원</div>
             <div>재고: {stock}</div>
           </ItemCard>

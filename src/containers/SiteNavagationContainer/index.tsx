@@ -8,8 +8,12 @@ import ListSelectedSvg from '../../../assets/img-list-selected.svg';
 import ListSvg from '../../../assets/img-list.svg';
 
 const NavBar = styled.nav`
+  position: fixed;
   height: 52px;
+  width: 100%;
+  top: 0;
   padding: 14px 18px;
+  z-index: 100;
   background-color: #fff;
 `;
 
