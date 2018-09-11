@@ -25,21 +25,42 @@ const PaddedLink = styled(Link)`
   padding: 8px;
 `;
 
+interface LinkItem {
+  path: string;
+  icon: string;
+  selectedIcon: string;
+}
+
 class SiteNavigationContainer extends React.Component<RouteComponentProps<any>> {
+  private links: LinkItem[];
+
+  constructor(props: RouteComponentProps<any>) {
+    super(props);
+
+    this.links = [
+      {
+        path: '/list',
+        icon: ListSvg,
+        selectedIcon: ListSelectedSvg
+      },
+      {
+        path: '/cart',
+        icon: CartSvg,
+        selectedIcon: CartSelectedSvg
+      }
+    ];
+  }
   public render() {
-    const { location } = this.props;
-    const isOnList = location.pathname === '/list';
-    const isOnCart = location.pathname === '/cart';
+    const currentPath = this.props.location.pathname;
     return (
       <NavBar>
         <Title>맥주 담기</Title>
         <RightIconGroup>
-          <PaddedLink to="/list">
-            {isOnList ? <img src={ListSelectedSvg} /> : <img src={ListSvg} />}
-          </PaddedLink>
-          <PaddedLink to="/cart">
-            {isOnCart ? <img src={CartSelectedSvg} /> : <img src={CartSvg} />}
-          </PaddedLink>
+          {this.links.map(({ path, icon, selectedIcon }) => (
+            <PaddedLink to={path} key={path}>
+              <img src={currentPath === path ? selectedIcon : icon} />
+            </PaddedLink>
+          ))}
         </RightIconGroup>
       </NavBar>
     );
