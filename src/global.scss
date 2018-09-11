@@ -1,0 +1,30 @@
+body {
+  font-size: 12px;
+  background-color: #F2F3F7;
+  margin: 0;
+  padding: 0;
+}
+
+div,
+header,
+span,
+h1,
+h2,
+h3,
+td,
+li,
+input,
+select,
+textarea,
+button,
+p {
+  font-family: 'Noto Sans', sans-serif;
+}
+
+body, html, #app {
+  height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
