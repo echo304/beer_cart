@@ -7,7 +7,7 @@ Client for Toss Homework!
 
 ### Run with Dev server
 ```bash
-npm run
+npm start
 ```
 
 ## Production
