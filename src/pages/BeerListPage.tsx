@@ -1,8 +1,10 @@
 import * as React from 'react';
 
+import BeerListContainer from '../containers/BeerListContainer';
+
 class BeerListPage extends React.Component {
   public render() {
-    return <div>listPage!!</div>;
+    return <BeerListContainer />;
   }
 }
 
