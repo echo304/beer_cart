@@ -7,7 +7,7 @@
     "start": "webpack-dev-server --mode development --hot --progress --color --port 3000 --open",
     "build": "webpack -p --progress --colors",
     "test": "./node_modules/.bin/jest --watch",
-    "server": "./node_modules/.bin/json-server --watch ./src/api/__mock/db.json --portserver"
+    "server": "./node_modules/.bin/json-server --watch ./src/api/__mock/db.json --port 3004"
   },
   "keywords": [],
   "author": "",
