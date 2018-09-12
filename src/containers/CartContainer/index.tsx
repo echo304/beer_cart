@@ -2,15 +2,12 @@ import _ from 'lodash';
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import { Beer } from '../../api/types';
+import { BeerWithCount } from '../../redux/beerList/types';
 import { RootState } from '../../redux/types';
+import CartSelectors from '../../selectors/cart';
 import ItemCard from '../BeerListContainer/ItemCard';
 
 import EmptyCart from './EmptyCart';
-
-interface BeerWithCount extends Beer {
-  count: number;
-}
 
 interface CartContainerProps {
   addedBeerIds: number[];
@@ -39,15 +36,9 @@ class CartContainer extends React.Component<CartContainerProps> {
 }
 
 const mapStateToProps = (state: RootState) => {
-  const { cart, beerList } = state;
-  const addedBeersArray: BeerWithCount[] = cart.addedBeerIds.map((id) => {
-    const beer = beerList.beers[id] as BeerWithCount;
-    beer.count = cart.addedBeersCount[id];
-    return beer;
-  });
   return {
-    addedBeerIds: cart.addedBeerIds,
-    addedBeersArray
+    addedBeerIds: CartSelectors.addedBeerIdsSelector(state),
+    addedBeersArray: CartSelectors.addedBeersArraySelector(state)
   };
 };
 

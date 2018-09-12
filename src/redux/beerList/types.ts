@@ -4,6 +4,10 @@ export interface SelectableTag extends Tag {
   selected: boolean;
 }
 
+export interface BeerWithCount extends Beer {
+  count: number;
+}
+
 export interface BeerListState {
   isFetching: boolean;
   beerIds: number[];
