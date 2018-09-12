@@ -23,10 +23,6 @@ interface BeerListContainerProps {
 }
 
 class BeerListContainer extends React.Component<BeerListContainerProps> {
-  public componentWillMount() {
-    this.fetchBeers();
-  }
-
   public render() {
     const { beersArray, hasMoreItemToRender } = this.props;
     return (
@@ -41,11 +37,6 @@ class BeerListContainer extends React.Component<BeerListContainerProps> {
         )}
       </div>
     );
-  }
-
-  private fetchBeers() {
-    const { beerListBoundActions } = this.props;
-    beerListBoundActions.fetchBeers();
   }
 
   @autobind

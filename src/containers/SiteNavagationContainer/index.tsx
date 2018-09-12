@@ -1,11 +1,14 @@
 import * as React from 'react';
+import { connect } from 'react-redux';
 import { Link, RouteComponentProps, withRouter } from 'react-router-dom';
+import { bindActionCreators } from 'redux';
 import styled from 'styled-components';
 
 import CartSelectedSvg from '../../../assets/img-cart-selected.svg';
 import CartSvg from '../../../assets/img-cart.svg';
 import ListSelectedSvg from '../../../assets/img-list-selected.svg';
 import ListSvg from '../../../assets/img-list.svg';
+import BeerListActions from '../../redux/beerList/actions';
 
 import Badge from './Badge';
 
@@ -33,7 +36,17 @@ const PaddedLink = styled(Link)`
   padding: 8px;
 `;
 
-class SiteNavigationContainer extends React.Component<RouteComponentProps<any>> {
+interface SiteNavigationContainerProps extends RouteComponentProps<any> {
+  beerListBoundActions: typeof BeerListActions;
+}
+
+class SiteNavigationContainer extends React.Component<SiteNavigationContainerProps> {
+  public componentDidMount() {
+    // This is obviously anti pattern.
+    // But I've added async task here for the project
+    this.fetchBeers();
+  }
+
   public render() {
     const currentPath = this.props.location.pathname;
     return (
@@ -51,6 +64,19 @@ class SiteNavigationContainer extends React.Component<RouteComponentProps<any>> 
       </NavBar>
     );
   }
-}
 
-export default withRouter(SiteNavigationContainer);
+  private fetchBeers() {
+    const { beerListBoundActions } = this.props;
+    beerListBoundActions.fetchBeers();
+  }
+}
+const mapDispatchToProps = (dispatch: any) => ({
+  beerListBoundActions: bindActionCreators(BeerListActions, dispatch)
+});
+
+const ConnectedComponent = connect(
+  null,
+  mapDispatchToProps
+)(SiteNavigationContainer);
+
+export default withRouter(ConnectedComponent);
