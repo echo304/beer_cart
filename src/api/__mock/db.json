@@ -65,8 +65,8 @@
       "image": "https://dummyimage.com/100x150/ffffff/000000.png&text=beer4",
       "tags": [
         {
-          "key": "lager",
-          "name": "라거"
+          "key": "ale",
+          "name": "에일"
         },
         {
           "key": "domestic",
