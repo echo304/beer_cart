@@ -19,6 +19,7 @@ export function* handleCheckoutItems(action: Action<typeof BeerListActions.fetch
     const purchaseResult: PurchaseSuccess = yield call(api.purchase.post, purchases);
     yield put(CartActions.clearCart());
     console.log(purchaseResult);
+    yield put(BeerListActions.fetchBeers());
   } catch (e) {
     console.error(e);
     yield put(BeerListActions.fetchBeersFailure(e));
