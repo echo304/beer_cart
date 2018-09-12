@@ -15,7 +15,9 @@ const ItemCardContainer = styled.div`
   height: 144px;
   margin: 8px 10px;
   padding: 12px;
+  border-radius: 2px;
   background-color: #fff;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.37);
   ::after {
     content: '';
     display: table;
