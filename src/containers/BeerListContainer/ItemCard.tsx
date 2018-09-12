@@ -10,12 +10,6 @@ import Button from '../../components/Button';
 import CartActions from '../../redux/cart/actions';
 import { RootState } from '../../redux/types';
 
-interface ItemCardProps extends Beer {
-  count?: number;
-  addedBeersCount: { [beerId: string]: number };
-  cartBoundActions: typeof CartActions;
-}
-
 const ItemCardContainer = styled.div`
   height: 144px;
   margin: 8px 10px;
@@ -44,10 +38,11 @@ interface TextProps {
   color?: string;
   fontWeight?: string;
   fontSize?: string;
+  marginRight?: string;
 }
 
 const StylableSpan = styled.span`
-  margin-right: 1px;
+  margin-right: ${(props: TextProps) => props.marginRight || '1px'};
   vertical-align: middle;
   color: ${(props: TextProps) => props.color || ''};
   font-weight: ${(props: TextProps) => props.fontWeight || ''};
@@ -61,9 +56,36 @@ const ButtonGroup = styled.div`
   justify-content: space-between;
 `;
 
+interface ItemCardProps extends Beer {
+  count?: number;
+  addedBeersCount: { [beerId: string]: number };
+  showStock?: boolean;
+  showAddButton?: boolean;
+  addButtonLabel?: string;
+  removeButtonLabel?: string;
+  cartBoundActions: typeof CartActions;
+}
+
 class ItemCard extends React.Component<ItemCardProps> {
+  public static defaultProps: Partial<ItemCardProps> = {
+    addButtonLabel: '담기',
+    removeButtonLabel: '빼기'
+  };
+
   public render() {
-    const { id, image, name, tags, price, stock, addedBeersCount } = this.props;
+    const {
+      id,
+      image,
+      name,
+      tags,
+      price,
+      stock,
+      addedBeersCount,
+      showStock,
+      showAddButton,
+      addButtonLabel,
+      removeButtonLabel
+    } = this.props;
 
     const tagNames = _.map(tags, 'name').join(', ');
     const currentCount = addedBeersCount[id];
@@ -85,12 +107,16 @@ class ItemCard extends React.Component<ItemCardProps> {
           <StylableSpan>원</StylableSpan>
         </ItemText>
         <ItemText>
-          <StylableSpan color="#6E6E78" fontSize="14px" fontWeight="light">
-            재고
-          </StylableSpan>
-          <StylableSpan color="#3C3C42" fontSize="14px" fontWeight="light">
-            {stock}
-          </StylableSpan>
+          {showStock && (
+            <>
+              <StylableSpan color="#6E6E78" fontSize="14px" fontWeight="light">
+                재고
+              </StylableSpan>
+              <StylableSpan color="#3C3C42" fontSize="14px" fontWeight="light" marginRight="5px">
+                {stock}
+              </StylableSpan>
+            </>
+          )}
           {isAddedToCart && (
             <>
               <StylableSpan color="#6E6E78" fontSize="14px" fontWeight="light">
@@ -104,15 +130,17 @@ class ItemCard extends React.Component<ItemCardProps> {
         </ItemText>
         <ButtonGroup>
           {isAddedToCart && (
-            <Button label="빼기" border="0" onClick={this.handleRemoveFromCartClick} />
+            <Button label={removeButtonLabel} border="0" onClick={this.handleRemoveFromCartClick} />
           )}
-          <Button
-            label="담기"
-            border="0"
-            primary
-            onClick={this.handleAddToCartClick}
-            disabled={isFullyAddedToCart}
-          />
+          {showAddButton && (
+            <Button
+              label={addButtonLabel}
+              border="0"
+              primary
+              onClick={this.handleAddToCartClick}
+              disabled={isFullyAddedToCart}
+            />
+          )}
         </ButtonGroup>
       </ItemCardContainer>
     );

@@ -32,7 +32,7 @@ class BeerListContainer extends React.Component<BeerListContainerProps> {
     return (
       <div>
         {beersArray.map((beer) => (
-          <ItemCard key={beer.id} {...beer} />
+          <ItemCard key={beer.id} {...beer} showAddButton showStock />
         ))}
         {hasMoreItemToRender && (
           <RenderMoreButtonWrapper>
