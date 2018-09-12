@@ -69,10 +69,29 @@ class BeerListContainer extends React.Component<BeerListContainerProps> {
 
 const mapStateToProps = (state: RootState) => {
   const { beerList } = state;
-  const { cursor } = beerList;
+  const { cursor, filters } = beerList;
   const hasMoreItemToRender = cursor < (beerList.beerIds.length as number);
+
+  const selectedFilterKeys = filters
+    .filter((filter) => filter.selected)
+    .map((selectedFilter) => selectedFilter.key);
+
   const beersArray = _(beerList.beerIds)
     .map((id) => beerList.beers[id])
+    .filter((beer) => {
+      const matchedFilter = _(beer.tags)
+        .map('key')
+        .intersection(selectedFilterKeys)
+        .value();
+      return matchedFilter.length > 0;
+    })
+    .orderBy((beer) => {
+      const matchedFilter = _(beer.tags)
+        .map('key')
+        .intersection(selectedFilterKeys)
+        .value();
+      return matchedFilter.length;
+    }, 'desc')
     .take(cursor)
     .value();
 
