@@ -1,36 +1,17 @@
-import _ from 'lodash';
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import styled from 'styled-components';
 
 import { Beer } from '../../api/types';
 import BeerListActions from '../../redux/beerList/actions';
 import { RootState } from '../../redux/types';
 
+import ItemCard from './ItemCard';
+
 interface BeerListContainerProps {
   beersArray: Beer[];
   beerListBoundActions: typeof BeerListActions;
 }
-
-const ItemCard = styled.div`
-  height: 144px;
-  margin: 8px 10px;
-  padding: 12px;
-  background-color: #fff;
-  ::after {
-    content: '';
-    display: table;
-    clear: both;
-  }
-`;
-
-const ItemImage = styled.img`
-  width: 56px;
-  height: 81px;
-  border: 1px solid #ebebed;
-  float: left;
-`;
 
 class BeerListContainer extends React.Component<BeerListContainerProps> {
   public componentWillMount() {
@@ -41,14 +22,8 @@ class BeerListContainer extends React.Component<BeerListContainerProps> {
     const { beersArray } = this.props;
     return (
       <div>
-        {beersArray.map(({ id, image, name, tags, price, stock }) => (
-          <ItemCard key={id}>
-            <ItemImage src={image} />
-            <div>{name}</div>
-            <div>{_.map(tags, 'name').join(', ')}</div>
-            <div>{price}원</div>
-            <div>재고: {stock}</div>
-          </ItemCard>
+        {beersArray.map((beer) => (
+          <ItemCard key={beer.id} {...beer} />
         ))}
       </div>
     );
