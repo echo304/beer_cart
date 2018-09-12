@@ -54,8 +54,11 @@ const StylableSpan = styled.span`
   font-size: ${(props: TextProps) => props.fontSize || ''};
 `;
 
-const ButtonWrapper = styled.div`
+const ButtonGroup = styled.div`
+  width: 110px;
   float: right;
+  display: flex;
+  justify-content: space-between;
 `;
 
 class ItemCard extends React.Component<ItemCardProps> {
@@ -99,7 +102,7 @@ class ItemCard extends React.Component<ItemCardProps> {
             </>
           )}
         </ItemText>
-        <ButtonWrapper>
+        <ButtonGroup>
           {isAddedToCart && (
             <Button label="빼기" border="0" onClick={this.handleRemoveFromCartClick} />
           )}
@@ -110,7 +113,7 @@ class ItemCard extends React.Component<ItemCardProps> {
             onClick={this.handleAddToCartClick}
             disabled={isFullyAddedToCart}
           />
-        </ButtonWrapper>
+        </ButtonGroup>
       </ItemCardContainer>
     );
   }

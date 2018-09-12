@@ -29,6 +29,7 @@ const StyledButton = styled.button`
       border: ${props.border};
     `};
   padding: 6px 15px;
+  margin-left: auto;
   border-radius: 4px;
 
   font-size: ${(props) => props.fontSize || '13px'};
