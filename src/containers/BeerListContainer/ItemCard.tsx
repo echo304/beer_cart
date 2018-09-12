@@ -7,6 +7,7 @@ import styled from 'styled-components';
 
 import { Beer } from '../../api/types';
 import Button from '../../components/Button';
+import StylableText from '../../components/StylableText';
 import CartActions from '../../redux/cart/actions';
 import { RootState } from '../../redux/types';
 
@@ -32,21 +33,6 @@ const ItemImage = styled.img`
 
 const ItemText = styled.div`
   margin-bottom: 4px;
-`;
-
-interface TextProps {
-  color?: string;
-  fontWeight?: string;
-  fontSize?: string;
-  marginRight?: string;
-}
-
-const StylableSpan = styled.span`
-  margin-right: ${(props: TextProps) => props.marginRight || '1px'};
-  vertical-align: middle;
-  color: ${(props: TextProps) => props.color || ''};
-  font-weight: ${(props: TextProps) => props.fontWeight || ''};
-  font-size: ${(props: TextProps) => props.fontSize || ''};
 `;
 
 const ButtonGroup = styled.div`
@@ -95,36 +81,36 @@ class ItemCard extends React.Component<ItemCardProps> {
       <ItemCardContainer key={id}>
         <ItemImage src={image} />
         <ItemText>
-          <StylableSpan fontSize="18px">{name}</StylableSpan>
+          <StylableText fontSize="18px">{name}</StylableText>
         </ItemText>
         <ItemText>
-          <StylableSpan color="#95959e">{tagNames}</StylableSpan>
+          <StylableText color="#95959e">{tagNames}</StylableText>
         </ItemText>
         <ItemText>
-          <StylableSpan color="#768399" fontSize="16px" fontWeight="bold">
+          <StylableText color="#768399" fontSize="16px" fontWeight="bold">
             {price}
-          </StylableSpan>
-          <StylableSpan>원</StylableSpan>
+          </StylableText>
+          <StylableText>원</StylableText>
         </ItemText>
         <ItemText>
           {showStock && (
             <>
-              <StylableSpan color="#6E6E78" fontSize="14px" fontWeight="light">
+              <StylableText color="#6E6E78" fontSize="14px" fontWeight="light">
                 재고
-              </StylableSpan>
-              <StylableSpan color="#3C3C42" fontSize="14px" fontWeight="light" marginRight="5px">
+              </StylableText>
+              <StylableText color="#3C3C42" fontSize="14px" fontWeight="light" marginRight="5px">
                 {stock}
-              </StylableSpan>
+              </StylableText>
             </>
           )}
           {isAddedToCart && (
             <>
-              <StylableSpan color="#6E6E78" fontSize="14px" fontWeight="light">
+              <StylableText color="#6E6E78" fontSize="14px" fontWeight="light">
                 수량
-              </StylableSpan>
-              <StylableSpan color="#3C3C42" fontSize="14px" fontWeight="light">
+              </StylableText>
+              <StylableText color="#3C3C42" fontSize="14px" fontWeight="light">
                 {currentCount}
-              </StylableSpan>
+              </StylableText>
             </>
           )}
         </ItemText>
