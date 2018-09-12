@@ -13,6 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "accounting": "^0.4.1",
     "autobind-decorator": "^2.1.0",
     "axios": "^0.18.0",
     "lodash": "^4.17.10",
@@ -26,6 +27,7 @@
     "styled-components": "^3.3.2"
   },
   "devDependencies": {
+    "@types/accounting": "^0.4.1",
     "@types/bytebuffer": "^5.0.37",
     "@types/enzyme": "^3.1.13",
     "@types/jest": "^23.0.0",
