@@ -8,6 +8,7 @@ import CartSelectedSvg from '../../../assets/img-cart-selected.svg';
 import CartSvg from '../../../assets/img-cart.svg';
 import ListSelectedSvg from '../../../assets/img-list-selected.svg';
 import ListSvg from '../../../assets/img-list.svg';
+import { FontSize } from '../../lib/styles';
 import BeerListActions from '../../redux/beerList/actions';
 
 import Badge from './Badge';
@@ -24,7 +25,7 @@ const NavBar = styled.nav`
 `;
 
 const Title = styled.span`
-  font-size: 20px;
+  font-size: ${FontSize.Large};
 `;
 
 const RightIconGroup = styled.div`

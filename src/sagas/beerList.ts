@@ -13,6 +13,7 @@ export function* handleFetchBeers(action: Action<typeof BeerListActions.fetchBee
   } catch (e) {
     console.error(e);
 
+    // It doesn't do anything with it
     yield put(BeerListActions.fetchBeersFailure(e));
   }
 }

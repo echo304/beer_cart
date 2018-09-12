@@ -6,6 +6,7 @@ import styled from 'styled-components';
 
 import { Beer } from '../../api/types';
 import { RENDER_COUNT_PER_REQUEST } from '../../lib/constants';
+import { colors, FontSize } from '../../lib/styles';
 import BeerListActions from '../../redux/beerList/actions';
 import { RootState } from '../../redux/types';
 import BeerListSelectors from '../../selectors/beerList';
@@ -23,8 +24,8 @@ const StyledButton = styled.button`
   margin-left: auto;
   border-radius: 20px;
   background-color: #fff;
-  color: #95959e;
-  font-size: 16px;
+  color: ${colors.gray};
+  font-size: ${FontSize.Medium};
   font-weight: bold;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.37);
 

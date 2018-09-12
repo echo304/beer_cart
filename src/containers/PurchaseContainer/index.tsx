@@ -9,6 +9,7 @@ import { Beer } from '../../api/types';
 import Button from '../../components/Button';
 import StylableText from '../../components/StylableText';
 import { formatCurrency } from '../../lib/formatters';
+import { colors, FontSize } from '../../lib/styles';
 import CartActions from '../../redux/cart/actions';
 import { RootState } from '../../redux/types';
 
@@ -50,12 +51,12 @@ class PurchaseContainer extends React.Component<PurchaseContainerProps> {
       <Container>
         <RightAlignContainer>
           <ItemText>
-            <StylableText color="#95959E" fontSize="20px">
+            <StylableText color={colors.gray} fontSize={FontSize.Large}>
               총 구매수량 {totalCount} 개
             </StylableText>
           </ItemText>
           <ItemText>
-            <StylableText color="#95959E" fontSize="20px">
+            <StylableText color={colors.gray} fontSize={FontSize.Large}>
               총 결재금액 {formatCurrency(totalAmount)} 원
             </StylableText>
           </ItemText>

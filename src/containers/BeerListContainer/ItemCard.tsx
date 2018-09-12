@@ -8,6 +8,7 @@ import styled from 'styled-components';
 import { Beer } from '../../api/types';
 import Button from '../../components/Button';
 import StylableText from '../../components/StylableText';
+import { colors, FontSize } from '../../lib/styles';
 import CartActions from '../../redux/cart/actions';
 import { RootState } from '../../redux/types';
 
@@ -83,13 +84,13 @@ class ItemCard extends React.Component<ItemCardProps> {
       <ItemCardContainer key={id}>
         <ItemImage src={image} />
         <ItemText>
-          <StylableText fontSize="18px">{name}</StylableText>
+          <StylableText fontSize={FontSize.MediumLarge}>{name}</StylableText>
         </ItemText>
         <ItemText>
-          <StylableText color="#95959e">{tagNames}</StylableText>
+          <StylableText color={colors.gray}>{tagNames}</StylableText>
         </ItemText>
         <ItemText>
-          <StylableText color="#768399" fontSize="16px" fontWeight="bold">
+          <StylableText color={colors.blueGray} fontSize={FontSize.Medium} fontWeight="bold">
             {price}
           </StylableText>
           <StylableText>원</StylableText>
@@ -97,20 +98,25 @@ class ItemCard extends React.Component<ItemCardProps> {
         <ItemText>
           {showStock && (
             <>
-              <StylableText color="#6E6E78" fontSize="14px" fontWeight="light">
+              <StylableText color={colors.lightGray} fontSize={FontSize.Small} fontWeight="light">
                 재고
               </StylableText>
-              <StylableText color="#3C3C42" fontSize="14px" fontWeight="light" marginRight="5px">
+              <StylableText
+                color={colors.darkGray}
+                fontSize={FontSize.Small}
+                fontWeight="light"
+                marginRight="5px"
+              >
                 {stock}
               </StylableText>
             </>
           )}
           {isAddedToCart && (
             <>
-              <StylableText color="#6E6E78" fontSize="14px" fontWeight="light">
+              <StylableText color={colors.lightGray} fontSize={FontSize.Small} fontWeight="light">
                 수량
               </StylableText>
-              <StylableText color="#3C3C42" fontSize="14px" fontWeight="light">
+              <StylableText color={colors.darkGray} fontSize={FontSize.Small} fontWeight="light">
                 {currentCount}
               </StylableText>
             </>
