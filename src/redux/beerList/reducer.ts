@@ -10,6 +10,7 @@ export const initialState: BeerListState = {
   isFetching: false,
   beerIds: [],
   beers: {},
+  filters: [],
   cursor: 0,
   error: null
 };
@@ -19,11 +20,14 @@ function fetchBeersSuccess(
   action: Action<typeof BeerListActions.fetchBeersSuccess>
 ) {
   const beersArray = action.beers;
+  const filters = _.flatten(beersArray.map((beer) => beer.tags));
+  const uniqFilters = _.uniqWith(filters, _.isEqual);
 
   return {
     ...state,
     beerIds: _.map(beersArray, 'id'),
-    beers: buildNewBeersMapFrom(beersArray)
+    beers: buildNewBeersMapFrom(beersArray),
+    filters: uniqFilters
   };
 }
 
