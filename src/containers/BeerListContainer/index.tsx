@@ -6,7 +6,6 @@ import { bindActionCreators } from 'redux';
 import styled from 'styled-components';
 
 import { Beer } from '../../api/types';
-import Button from '../../components/Button';
 import { RENDER_COUNT_PER_REQUEST } from '../../lib/constants';
 import BeerListActions from '../../redux/beerList/actions';
 import { RootState } from '../../redux/types';
@@ -15,7 +14,29 @@ import ItemCard from './ItemCard';
 
 const RenderMoreButtonWrapper = styled.div`
   text-align: center;
+  margin: 15px 0 30px 0;
 `;
+
+const StyledButton = styled.button`
+  height: 40px;
+  padding: 6px 15px;
+  margin-left: auto;
+  border-radius: 20px;
+  background-color: #fff;
+  color: #95959e;
+  font-size: 16px;
+  font-weight: bold;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.37);
+
+  cursor: pointer;
+  transform: translateY(0);
+  transition: all 0.25s ease;
+
+  &:active {
+    transform: translateY(1px);
+  }
+`;
+
 interface BeerListContainerProps {
   beersArray: Beer[];
   hasMoreItemToRender: boolean;
@@ -32,7 +53,7 @@ class BeerListContainer extends React.Component<BeerListContainerProps> {
         ))}
         {hasMoreItemToRender && (
           <RenderMoreButtonWrapper>
-            <Button label="더보기 +" onClick={this.handleRenderMoreClick} />
+            <StyledButton onClick={this.handleRenderMoreClick}>더보기 +</StyledButton>
           </RenderMoreButtonWrapper>
         )}
       </div>
