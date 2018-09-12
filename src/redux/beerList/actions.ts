@@ -4,9 +4,7 @@ export enum BeerListActionTypes {
   FetchBeers = 'BEER_LIST/FETCH_BEERS',
   FetchBeersSuccess = 'BEER_LIST/FETCH_BEERS_SUCCESS',
   FetchBeersFailure = 'BEER_LIST/FETCH_BEERS_FAILURE',
-  RenderBeers = 'BEER_LIST/RENDER_BEERS',
-  PutBeerToCart = 'BEER_LIST/PUT_BEER_TO_CART',
-  RemoveBeerFromCart = 'BEER_LIST/REMOVE_BEER_FROM_CART'
+  RenderBeers = 'BEER_LIST/RENDER_BEERS'
 }
 
 namespace BeerListActions {
@@ -24,14 +22,6 @@ namespace BeerListActions {
 
   export function renderBeers(numberOfItemsToRender: number) {
     return { type: BeerListActionTypes.RenderBeers, numberOfItemsToRender };
-  }
-
-  export function putBeerToCart(beerId: Beer['id']) {
-    return { type: BeerListActionTypes.PutBeerToCart, beerId };
-  }
-
-  export function removeBeerFromCart(beerId: Beer['id']) {
-    return { type: BeerListActionTypes.RemoveBeerFromCart, beerId };
   }
 }
 
