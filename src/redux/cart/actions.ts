@@ -15,7 +15,7 @@ namespace CartActions {
   }
 
   export function checkoutItems() {
-    return { type: CartActionTypes.RemoveItemFromCart };
+    return { type: CartActionTypes.CheckoutItems };
   }
 
   export function clearCart() {

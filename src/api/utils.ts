@@ -14,3 +14,13 @@ export async function apiGet(
   const res = await axios.get(url, data);
   return resultSelector(res);
 }
+
+export async function apiPost(
+  url: string,
+  params = {},
+  config = {},
+  resultSelector = DEFAULT_RESULT_SELECTOR
+) {
+  const res = await axios.post(url, params, config);
+  return resultSelector(res);
+}
