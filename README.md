@@ -30,7 +30,7 @@ While dev server is running, open chrome with `http://localhost:3000` </br>
 Open chrome Dev tool and make sure to set mobile device mode </br>
 <img width="470" alt="2018-09-12 12 23 03" src="https://user-images.githubusercontent.com/16456651/45400367-c8784c00-b686-11e8-9424-c5215e084535.png">
 
-### TODO
+### Things to improve (Need more time!!!)
 - Politely display unexpected Error with Modal
 - Refactor code for more readability and maintainability
 - Add unit test with Jest
