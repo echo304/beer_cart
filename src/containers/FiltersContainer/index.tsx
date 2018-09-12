@@ -30,23 +30,15 @@ class FiltersContainer extends React.Component<FiltersContainerProps> {
 
     return (
       <FiltersGroup>
-        {filters.map((filter) => (
-          <FilterWrapper key={filter.key}>
-            {filter.selected ? (
-              <Button
-                primary
-                label={filter.name}
-                key={filter.key}
-                onClick={() => this.handleFilterClick(filter.key)}
-              />
-            ) : (
-              <Button
-                transparentPrimary
-                label={filter.name}
-                key={filter.key}
-                onClick={() => this.handleFilterClick(filter.key)}
-              />
-            )}
+        {filters.map(({ key, name, selected }) => (
+          <FilterWrapper key={key}>
+            <Button
+              primary={selected}
+              transparentPrimary={!selected}
+              label={name}
+              key={key}
+              onClick={() => this.handleFilterClick(key)}
+            />
           </FilterWrapper>
         ))}
       </FiltersGroup>
@@ -54,7 +46,6 @@ class FiltersContainer extends React.Component<FiltersContainerProps> {
   }
 
   private handleFilterClick(key: string) {
-    console.log('value', key);
     this.props.beerListBoundActions.toggleFilter(key);
   }
 }
