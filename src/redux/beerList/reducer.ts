@@ -22,6 +22,7 @@ function fetchBeersSuccess(
   const beersArray = action.beers;
   const filters = _.flatten(beersArray.map((beer) => beer.tags));
   const uniqFilters = _.uniqWith(filters, _.isEqual);
+  uniqFilters.forEach((filter) => (filter.selected = true));
 
   return {
     ...state,
@@ -60,11 +61,27 @@ function renderBeers(state: BeerListState, action: Action<typeof BeerListActions
   };
 }
 
+function toggleFilter(state: BeerListState, action: Action<typeof BeerListActions.toggleFilter>) {
+  const { filterKey } = action;
+  const newFilters = _.cloneDeep(state.filters);
+  const filterToBeToggled = _.find(newFilters, (filter) => filter.key === filterKey);
+
+  if (filterToBeToggled) {
+    filterToBeToggled.selected = !filterToBeToggled.selected;
+  }
+
+  return {
+    ...state,
+    filters: newFilters
+  };
+}
+
 export default createReducer(
   {
     [BeerListActionTypes.FetchBeersSuccess]: fetchBeersSuccess,
     [BeerListActionTypes.FetchBeersFailure]: fetchBeersFailure,
-    [BeerListActionTypes.RenderBeers]: renderBeers
+    [BeerListActionTypes.RenderBeers]: renderBeers,
+    [BeerListActionTypes.ToggleFilter]: toggleFilter
   },
   initialState
 );

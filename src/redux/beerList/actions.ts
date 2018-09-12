@@ -4,7 +4,8 @@ export enum BeerListActionTypes {
   FetchBeers = 'BEER_LIST/FETCH_BEERS',
   FetchBeersSuccess = 'BEER_LIST/FETCH_BEERS_SUCCESS',
   FetchBeersFailure = 'BEER_LIST/FETCH_BEERS_FAILURE',
-  RenderBeers = 'BEER_LIST/RENDER_BEERS'
+  RenderBeers = 'BEER_LIST/RENDER_BEERS',
+  ToggleFilter = 'BEER_LIST/TOGGLE_FILTER'
 }
 
 namespace BeerListActions {
@@ -22,6 +23,10 @@ namespace BeerListActions {
 
   export function renderBeers(numberOfItemsToRender: number) {
     return { type: BeerListActionTypes.RenderBeers, numberOfItemsToRender };
+  }
+
+  export function toggleFilter(filterKey: string) {
+    return { type: BeerListActionTypes.ToggleFilter, filterKey };
   }
 }
 
