@@ -17,6 +17,7 @@ const NavBar = styled.nav`
   padding: 14px 18px;
   z-index: 100;
   background-color: #fff;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.37);
 `;
 
 const Title = styled.span`
