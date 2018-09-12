@@ -16,13 +16,24 @@ export function* handleCheckoutItems(action: Action<typeof BeerListActions.fetch
     };
   });
   try {
+    console.log('-------------------------------------');
+    console.log(`Submitting purchase request`);
+    console.log(`Items you are purchasing...`);
+    purchases.forEach((purchase) => {
+      console.log(`ID: ${purchase.id} - Count: ${purchase.count}`);
+    });
+    console.log('-------------------------------------');
     const purchaseResult: PurchaseSuccess = yield call(api.purchase.post, purchases);
     yield put(CartActions.clearCart());
-    console.log(purchaseResult);
+    console.log('-------------------------------------');
+    console.log(`Purchase request success`);
+    console.log(`Total Item you purchased: ${purchaseResult.totalCount}`);
+    console.log(`Total Price you purchased: ${purchaseResult.totalPrice}`);
+    console.log('**Be Noted that this returning data is FAKE!!**');
+    console.log('-------------------------------------');
     yield put(BeerListActions.fetchBeers());
   } catch (e) {
     console.error(e);
-    yield put(BeerListActions.fetchBeersFailure(e));
   }
 }
 
