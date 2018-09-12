@@ -46,7 +46,7 @@ interface TextProps {
   fontSize?: string;
 }
 
-const Span = styled.span`
+const StylableSpan = styled.span`
   margin-right: 1px;
   vertical-align: middle;
   color: ${(props: TextProps) => props.color || ''};
@@ -61,36 +61,38 @@ const ButtonWrapper = styled.div`
 class ItemCard extends React.Component<ItemCardProps> {
   public render() {
     const { id, image, name, tags, price, stock, addedBeersCount } = this.props;
+
+    const tagNames = _.map(tags, 'name').join(', ');
     const currentCount = addedBeersCount[id as number];
     const isAddedToCart = _.isInteger(currentCount) && currentCount > 0;
     return (
       <ItemCardContainer key={id}>
         <ItemImage src={image} />
         <ItemText>
-          <Span fontSize="18px">{name}</Span>
+          <StylableSpan fontSize="18px">{name}</StylableSpan>
         </ItemText>
         <ItemText>
-          <Span color="#95959e">{_.map(tags, 'name').join(', ')}</Span>
+          <StylableSpan color="#95959e">{tagNames}</StylableSpan>
         </ItemText>
         <ItemText>
-          <Span color="#768399" fontSize="16px" fontWeight="bold">
+          <StylableSpan color="#768399" fontSize="16px" fontWeight="bold">
             {price}
-          </Span>
-          <Span>원</Span>
+          </StylableSpan>
+          <StylableSpan>원</StylableSpan>
         </ItemText>
         <ItemText>
-          <Span color="#6E6E78" fontSize="14px" fontWeight="light">
+          <StylableSpan color="#6E6E78" fontSize="14px" fontWeight="light">
             재고
-          </Span>
-          <Span color="#3C3C42" fontSize="14px" fontWeight="light">
+          </StylableSpan>
+          <StylableSpan color="#3C3C42" fontSize="14px" fontWeight="light">
             {stock}
-          </Span>
+          </StylableSpan>
         </ItemText>
         <ButtonWrapper>
           {isAddedToCart && (
             <Button label="빼기" border="0" onClick={this.handleRemoveFromCartClick} />
           )}
-          <Button label="담기" primary border="0" onClick={this.handleAddToCartClick} />
+          <Button label="담기" border="0" primary onClick={this.handleAddToCartClick} />
         </ButtonWrapper>
       </ItemCardContainer>
     );
