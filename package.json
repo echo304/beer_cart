@@ -24,6 +24,7 @@
     "react-scripts-ts": "2.16.0",
     "redux": "^4.0.0",
     "redux-saga": "^0.16.0",
+    "reselect": "^3.0.1",
     "styled-components": "^3.3.2"
   },
   "devDependencies": {
@@ -38,6 +39,7 @@
     "@types/react-hot-loader": "^4.1.0",
     "@types/react-redux": "^6.0.7",
     "@types/react-router-dom": "^4.3.0",
+    "@types/reselect": "^2.2.0",
     "@types/webpack-env": "^1.13.6",
     "awesome-typescript-loader": "^5.0.0",
     "babel-core": "^6.26.3",
