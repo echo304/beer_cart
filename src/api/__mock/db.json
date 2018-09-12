@@ -2,7 +2,7 @@
   "beers" :[
     {
       "id": 1,
-      "name": "Bear 1",
+      "name": "Beer 1",
       "image": "https://dummyimage.com/100x150/ffffff/000000.png&text=beer1",
       "tags": [
         {
@@ -19,7 +19,7 @@
     },
     {
       "id": 2,
-      "name": "Bear 2",
+      "name": "Beer 2",
       "image": "https://dummyimage.com/100x150/ffffff/000000.png&text=beer2",
       "tags": [
         {
@@ -35,7 +35,7 @@
     },
     {
       "id": 3,
-      "name": "Bear 3",
+      "name": "Beer 3",
       "image": "https://dummyimage.com/100x150/ffffff/000000.png&text=beer3",
       "tags": [
         {
@@ -45,13 +45,22 @@
         {
           "key": "domestic",
           "name": "국산맥주"
-        }    ],
+        },
+        {
+          "key": "ob",
+          "name": "OB맥주"
+        },
+        {
+          "key": "highend",
+          "name": "고급맥주"
+        }
+      ],
       "price": 5000,
       "stock": 5
     },
     {
       "id": 4,
-      "name": "Bear 4",
+      "name": "Beer 4",
       "image": "https://dummyimage.com/100x150/ffffff/000000.png&text=beer4",
       "tags": [
         {
@@ -67,7 +76,7 @@
     },
     {
       "id": 5,
-      "name": "Bear 5",
+      "name": "Beer 5",
       "image": "https://dummyimage.com/100x150/ffffff/000000.png&text=beer5",
       "tags": [
         {
@@ -83,7 +92,7 @@
     },
     {
       "id": 6,
-      "name": "Bear 6",
+      "name": "Beer 6",
       "image": "https://dummyimage.com/100x150/ffffff/000000.png&text=beer6",
       "tags": [
         {
@@ -99,7 +108,7 @@
     },
     {
       "id": 7,
-      "name": "Bear 7",
+      "name": "Beer 7",
       "image": "https://dummyimage.com/100x150/ffffff/000000.png&text=beer7",
       "tags": [
         {
@@ -115,7 +124,7 @@
     },
     {
       "id": 8,
-      "name": "Bear 8",
+      "name": "Beer 8",
       "image": "https://dummyimage.com/100x150/ffffff/000000.png&text=beer8",
       "tags": [
         {
@@ -131,7 +140,7 @@
     },
     {
       "id": 9,
-      "name": "Bear 9",
+      "name": "Beer 9",
       "image": "https://dummyimage.com/100x150/ffffff/000000.png&text=beer9",
       "tags": [
         {
