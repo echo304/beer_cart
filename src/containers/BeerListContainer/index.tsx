@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -37,7 +38,12 @@ class BeerListContainer extends React.Component<BeerListContainerProps> {
 
 const mapStateToProps = (state: RootState) => {
   const { beerList } = state;
-  const beersArray = beerList.beerIds.map((id) => beerList.beers[id]);
+  const { cursor } = beerList;
+  const beersArray = _(beerList.beerIds)
+    .map((id) => beerList.beers[id])
+    .take(cursor)
+    .value();
+
   return {
     beersArray
   };
