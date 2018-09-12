@@ -7,6 +7,8 @@ import CartSvg from '../../../assets/img-cart.svg';
 import ListSelectedSvg from '../../../assets/img-list-selected.svg';
 import ListSvg from '../../../assets/img-list.svg';
 
+import Badge from './Badge';
+
 const NavBar = styled.nav`
   position: fixed;
   height: 52px;
@@ -26,45 +28,24 @@ const RightIconGroup = styled.div`
 `;
 
 const PaddedLink = styled(Link)`
+  position: relative;
   padding: 8px;
 `;
 
-interface LinkItem {
-  path: string;
-  icon: string;
-  selectedIcon: string;
-}
-
 class SiteNavigationContainer extends React.Component<RouteComponentProps<any>> {
-  private links: LinkItem[];
-
-  constructor(props: RouteComponentProps<any>) {
-    super(props);
-
-    this.links = [
-      {
-        path: '/list',
-        icon: ListSvg,
-        selectedIcon: ListSelectedSvg
-      },
-      {
-        path: '/cart',
-        icon: CartSvg,
-        selectedIcon: CartSelectedSvg
-      }
-    ];
-  }
   public render() {
     const currentPath = this.props.location.pathname;
     return (
       <NavBar>
         <Title>맥주 담기</Title>
         <RightIconGroup>
-          {this.links.map(({ path, icon, selectedIcon }) => (
-            <PaddedLink to={path} key={path}>
-              <img src={currentPath === path ? selectedIcon : icon} />
-            </PaddedLink>
-          ))}
+          <PaddedLink to={'/list'}>
+            <img src={currentPath === '/list' ? ListSelectedSvg : ListSvg} />
+          </PaddedLink>
+          <PaddedLink to={'/cart'}>
+            <img src={currentPath === '/cart' ? CartSelectedSvg : CartSvg} />
+            <Badge />
+          </PaddedLink>
         </RightIconGroup>
       </NavBar>
     );
