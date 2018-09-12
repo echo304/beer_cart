@@ -34,8 +34,10 @@ class Badge extends React.Component<BadgeProps> {
 }
 
 const mapStateToProps = (state: RootState) => {
+  const MAX_NUMBER_TO_RENDER = 99;
   const { addedBeersCount } = state.cart;
-  const totalCount = _.reduce(addedBeersCount, (sum, count) => sum + count, 0);
+  let totalCount = _.reduce(addedBeersCount, (sum, count) => sum + count, 0);
+  totalCount = Math.min(MAX_NUMBER_TO_RENDER, totalCount);
   return {
     totalCount
   };
