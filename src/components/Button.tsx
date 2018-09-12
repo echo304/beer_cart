@@ -7,8 +7,14 @@ const primaryStyle = css`
   background: #3369e8;
 `;
 
+const transparentPrimaryStyle = css`
+  color: #3369e8;
+  background: transparent;
+`;
+
 const StyledButton = styled.button`
   ${(props) => props.primary && primaryStyle};
+  ${(props) => props.transparentPrimary && transparentPrimaryStyle};
   ${(props: StyledButtonProps) =>
     props.width &&
     css`
@@ -52,6 +58,7 @@ const StyledButton = styled.button`
 
 interface StyledButtonProps {
   primary?: boolean;
+  transparentPrimary?: boolean;
   width?: string;
   height?: string;
   minWidth?: string;
@@ -73,11 +80,23 @@ class Button extends React.Component<ButtonProps> {
   };
 
   public render() {
-    const { id, primary, width, height, minWidth, fontSize, disabled, label, border } = this.props;
+    const {
+      id,
+      primary,
+      transparentPrimary,
+      width,
+      height,
+      minWidth,
+      fontSize,
+      disabled,
+      label,
+      border
+    } = this.props;
     return (
       <StyledButton
         id={id}
         primary={primary}
+        transparentPrimary={transparentPrimary}
         width={width}
         height={height}
         minWidth={minWidth}
