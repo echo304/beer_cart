@@ -10,7 +10,7 @@ import Button from '../../components/Button';
 import CartActions from '../../redux/cart/actions';
 import { RootState } from '../../redux/types';
 
-interface ItemCardProps extends Partial<Beer> {
+interface ItemCardProps extends Beer {
   count?: number;
   addedBeersCount: { [beerId: string]: number };
   cartBoundActions: typeof CartActions;
@@ -63,8 +63,9 @@ class ItemCard extends React.Component<ItemCardProps> {
     const { id, image, name, tags, price, stock, addedBeersCount } = this.props;
 
     const tagNames = _.map(tags, 'name').join(', ');
-    const currentCount = addedBeersCount[id as number];
+    const currentCount = addedBeersCount[id];
     const isAddedToCart = _.isInteger(currentCount) && currentCount > 0;
+    const isFullyAddedToCart = currentCount === stock;
     return (
       <ItemCardContainer key={id}>
         <ItemImage src={image} />
@@ -87,12 +88,28 @@ class ItemCard extends React.Component<ItemCardProps> {
           <StylableSpan color="#3C3C42" fontSize="14px" fontWeight="light">
             {stock}
           </StylableSpan>
+          {isAddedToCart && (
+            <>
+              <StylableSpan color="#6E6E78" fontSize="14px" fontWeight="light">
+                수량
+              </StylableSpan>
+              <StylableSpan color="#3C3C42" fontSize="14px" fontWeight="light">
+                {currentCount}
+              </StylableSpan>
+            </>
+          )}
         </ItemText>
         <ButtonWrapper>
           {isAddedToCart && (
             <Button label="빼기" border="0" onClick={this.handleRemoveFromCartClick} />
           )}
-          <Button label="담기" border="0" primary onClick={this.handleAddToCartClick} />
+          <Button
+            label="담기"
+            border="0"
+            primary
+            onClick={this.handleAddToCartClick}
+            disabled={isFullyAddedToCart}
+          />
         </ButtonWrapper>
       </ItemCardContainer>
     );
@@ -101,13 +118,13 @@ class ItemCard extends React.Component<ItemCardProps> {
   @autobind
   private handleRemoveFromCartClick() {
     const { id } = this.props;
-    this.props.cartBoundActions.removeItemFromCart(id as number);
+    this.props.cartBoundActions.removeItemFromCart(id);
   }
 
   @autobind
   private handleAddToCartClick() {
     const { id } = this.props;
-    this.props.cartBoundActions.addItemToCart(id as number);
+    this.props.cartBoundActions.addItemToCart(id);
   }
 }
 
