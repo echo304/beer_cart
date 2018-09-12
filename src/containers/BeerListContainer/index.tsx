@@ -1,5 +1,4 @@
 import autobind from 'autobind-decorator';
-import _ from 'lodash';
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -9,6 +8,7 @@ import { Beer } from '../../api/types';
 import { RENDER_COUNT_PER_REQUEST } from '../../lib/constants';
 import BeerListActions from '../../redux/beerList/actions';
 import { RootState } from '../../redux/types';
+import BeerListSelectors from '../../selectors/beerList';
 
 import ItemCard from './ItemCard';
 
@@ -68,36 +68,9 @@ class BeerListContainer extends React.Component<BeerListContainerProps> {
 }
 
 const mapStateToProps = (state: RootState) => {
-  const { beerList } = state;
-  const { cursor, filters } = beerList;
-  const hasMoreItemToRender = cursor < (beerList.beerIds.length as number);
-
-  const selectedFilterKeys = filters
-    .filter((filter) => filter.selected)
-    .map((selectedFilter) => selectedFilter.key);
-
-  const beersArray = _(beerList.beerIds)
-    .map((id) => beerList.beers[id])
-    .filter((beer) => {
-      const matchedFilter = _(beer.tags)
-        .map('key')
-        .intersection(selectedFilterKeys)
-        .value();
-      return matchedFilter.length > 0;
-    })
-    .orderBy((beer) => {
-      const matchedFilter = _(beer.tags)
-        .map('key')
-        .intersection(selectedFilterKeys)
-        .value();
-      return matchedFilter.length;
-    }, 'desc')
-    .take(cursor)
-    .value();
-
   return {
-    beersArray,
-    hasMoreItemToRender
+    beersArray: BeerListSelectors.beersToBeRenderedSelector(state),
+    hasMoreItemToRender: BeerListSelectors.hasMoreItemsToRenderSelector(state)
   };
 };
 
