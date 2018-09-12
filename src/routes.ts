@@ -1,5 +1,5 @@
 import BeerListPage from './pages/BeerListPage';
-import CartPage from './pages/CarPage';
+import CartPage from './pages/CartPage';
 
 interface RouteConfig {
   path: string;
