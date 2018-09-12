@@ -8,6 +8,7 @@ const primaryStyle = css`
 `;
 
 const StyledButton = styled.button`
+  ${(props) => props.primary && primaryStyle};
   ${(props: StyledButtonProps) =>
     props.width &&
     css`
@@ -38,8 +39,6 @@ const StyledButton = styled.button`
   transform: translateY(0);
   transition: all 0.25s ease;
 
-  ${(props) => props.primary && primaryStyle};
-
   &:active {
     transform: translateY(1px);
   }
@@ -61,16 +60,10 @@ interface StyledButtonProps {
   nowrap?: boolean;
 }
 
-export interface ButtonProps {
+export interface ButtonProps extends StyledButtonProps {
   id?: string;
   label?: string;
-  primary?: boolean;
   onClick?: () => void;
-  width?: string;
-  height?: string;
-  minWidth?: string;
-  border?: string;
-  fontSize?: string;
   disabled?: boolean;
 }
 
